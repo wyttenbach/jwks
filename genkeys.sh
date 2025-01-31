@@ -1,4 +1,11 @@
 #!/bin/bash
+function die { 
+    if [ $# -gt 0 ]; then
+        echo "$@";
+    fi;
+    exit 1
+}
+
 openssl genrsa -out privateKey.pem 512 || die
 openssl rsa -in privateKey.pem -pubout -out publicKey.pem || die
 
